@@ -1,13 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
 	<groupId>com.axonivy.lab.javaee</groupId>
 	<artifactId>document-resource</artifactId>
-
 	<version>1.0-SNAPSHOT</version>
-
 	<packaging>war</packaging>
 
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<public.ip.address>127.0.0.1</public.ip.address>
+	</properties>
+	
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
@@ -45,7 +51,7 @@
 				<version>1.1.0.Alpha11</version>
 				<configuration>
 					<serverArgs>-b=192.168.72.79</serverArgs>
-					<javaOpts>-Djboss.bind.address=192.168.72.79</javaOpts>
+					<javaOpts>-Djboss.bind.address=${public.ip.address}</javaOpts>
 					<filename>${project.build.finalName}.war</filename>
 				</configuration>
 			</plugin>
@@ -53,9 +59,4 @@
 		</plugins>
 	</build>
 
-	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<failOnMissingWebXml>false</failOnMissingWebXml>
-	</properties>
 </project>
