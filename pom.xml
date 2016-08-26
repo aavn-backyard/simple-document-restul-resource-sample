@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.axonivy.lab.javaee</groupId>
 	<artifactId>document-resource</artifactId>
-	
+
 	<version>1.0-SNAPSHOT</version>
-	
+
 	<packaging>war</packaging>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
@@ -15,11 +15,20 @@
 			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tika</groupId>
+			<artifactId>tika-core</artifactId>
+			<version>1.13</version>
+		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>document-resource</finalName>
-		
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -33,15 +42,17 @@
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.0.2.Final</version>
+				<version>1.1.0.Alpha11</version>
 				<configuration>
+					<serverArgs>-b=192.168.72.79</serverArgs>
+					<javaOpts>-Djboss.bind.address=192.168.72.79</javaOpts>
 					<filename>${project.build.finalName}.war</filename>
 				</configuration>
 			</plugin>
 
 		</plugins>
 	</build>
-	
+
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
